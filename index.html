@@ -594,7 +594,7 @@
         </div>
 
         <div id="canvasWrap">
-            <!-- ===== NARASI PEMANTIK DI ATAS CANVAS ===== -->
+            <!-- ===== NARASI PEMANTIK DI ATAS CANVAS (DIPERPENDEK - 5 BARIS) ===== -->
             <div id="pemantikOverlay">
                 <div>
                     <span class="pemantik-icon">💡</span>
@@ -613,7 +613,7 @@
                 </div>
             </div>
 
-            <!-- ===== FAKTA MENARIK DI SISI KANAN (VERTIKAL) ===== -->
+            <!-- ===== FAKTA MENARIK DI SISI KANAN (VERTIKAL) - BERJALAN LANCAR ===== -->
             <div id="funFactOverlay">
                 <span class="fact-icon">💡</span>
                 <span class="fact-text" id="funFactText">
@@ -723,7 +723,7 @@
         ];
         let factIndex = 0;
         let factTimer = 0;
-        const FACT_INTERVAL = 240;
+        const FACT_INTERVAL = 240; // ~4 detik (60fps × 4)
 
         const rangeFluid = document.getElementById('rangeFluidRho');
         const valFluid = document.getElementById('valFluidRho');
@@ -1220,58 +1220,6 @@
             ctx.textBaseline = 'alphabetic';
 
             drawBendaShape(currentBendaX, currentBendaY, bendaRadius);
-
-            // ========== NARASI PERTANYAAN DI DEKAT ALAT PERCOBAAN (SEBELAH KANAN) ==========
-            // Posisi: di sebelah kanan gelas ukur, di atas neraca
-            const pertanyaanX = gx + gw + 40 * s; // Di sebelah kanan gelas ukur
-            const pertanyaanY = gy + 20 * s; // Sejajar dengan bagian atas gelas ukur
-            
-            ctx.textAlign = 'left';
-            ctx.textBaseline = 'top';
-            
-            // Background gelap transparan untuk teks pertanyaan
-            const pertanyaanW = 220 * s;
-            const pertanyaanH = 95 * s;
-            ctx.shadowColor = 'rgba(0,0,0,0.3)';
-            ctx.shadowBlur = 20 * s;
-            ctx.fillStyle = 'rgba(10, 25, 35, 0.82)';
-            ctx.beginPath();
-            ctx.roundRect(pertanyaanX - 10 * s, pertanyaanY - 8 * s, pertanyaanW + 20 * s, pertanyaanH + 16 * s, 12 * s);
-            ctx.fill();
-            ctx.shadowBlur = 0;
-            
-            ctx.strokeStyle = 'rgba(255, 215, 0, 0.2)';
-            ctx.lineWidth = 1.5 * s;
-            ctx.beginPath();
-            ctx.roundRect(pertanyaanX - 10 * s, pertanyaanY - 8 * s, pertanyaanW + 20 * s, pertanyaanH + 16 * s, 12 * s);
-            ctx.stroke();
-            
-            // Teks pertanyaan dengan ikon
-            ctx.font = `bold ${14 * s}px "Segoe UI", sans-serif`;
-            ctx.fillStyle = '#ffd93d';
-            ctx.shadowColor = 'rgba(255, 215, 0, 0.2)';
-            ctx.shadowBlur = 10 * s;
-            ctx.fillText('🔍 AYO KITA CARI TAHU', pertanyaanX, pertanyaanY);
-            
-            ctx.font = `bold ${13 * s}px "Segoe UI", sans-serif`;
-            ctx.fillStyle = '#ffffff';
-            ctx.shadowColor = 'rgba(255,255,255,0.1)';
-            ctx.shadowBlur = 8 * s;
-            
-            // Baris pertama
-            ctx.fillText('KENAPA BENDA DAPAT', pertanyaanX, pertanyaanY + 22 * s);
-            ctx.fillText('TERAPUNG, MELAYANG', pertanyaanX, pertanyaanY + 40 * s);
-            
-            // Baris kedua dengan warna berbeda
-            ctx.fillStyle = '#7fe4ff';
-            ctx.fillText('DAN TENGGELAM', pertanyaanX, pertanyaanY + 58 * s);
-            
-            // Baris ketiga
-            ctx.fillStyle = '#ffffff';
-            ctx.font = `bold ${11 * s}px "Segoe UI", sans-serif`;
-            ctx.fillText('KETIKA DICELUPKAN KE AIR?', pertanyaanX, pertanyaanY + 78 * s);
-            
-            ctx.shadowBlur = 0;
 
             // ========== NARASI ARCHIMEDES - WARNA HITAM ==========
             const narasiX = 18 * s;
